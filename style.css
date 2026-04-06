@@ -1,59 +1,257 @@
-    :root {
-      --accent-color: #f39c12;
-      --transition-speed: 0.3s;
-    }
+:root {
+  --accent: #f39c12;
+  --transition: 0.3s ease;
+  --radius: 16px;
+}
 
-    body {
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-    }
 
-    /* Navbar Glassmorphism */
-    .navbar {
-      backdrop-filter: blur(10px);
-      background-color: rgba(var(--bs-body-bg-rgb), 0.8) !important;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
+/* =========================
+   Base Styles
+========================= */
+body {
+  font-family: 'Inter', sans-serif;
+  scroll-behavior: smooth;
+}
 
-    /* Hero Section Gradient */
-    #hero {
-      background: radial-gradient(circle at top right, rgba(243, 156, 18, 0.05), transparent),
-                  radial-gradient(circle at bottom left, rgba(243, 156, 18, 0.05), transparent);
-    }
 
-    .profile-img {
-      border: 4px solid var(--accent-color);
-      transition: transform var(--transition-speed);
-    }
-    .profile-img:hover { transform: rotate(5deg) scale(1.05); }
+/* =========================
+   Navbar (Glass Effect)
+========================= */
+.navbar {
+  backdrop-filter: blur(12px);
+  background: rgba(var(--bs-body-bg-rgb), 0.8) !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
 
-    /* Modern Card Effects */
-    .card {
-      border: none;
-      border-radius: 16px;
-      transition: all var(--transition-speed) ease;
-      background: rgba(var(--bs-body-bg-rgb), 1);
-    }
 
-    .skill-card:hover, .project-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
-    }
+/* =========================
+   Hero Section
+========================= */
+#hero {
+  background:
+    radial-gradient(circle at top right, rgba(243, 156, 18, 0.05), transparent),
+    radial-gradient(circle at bottom left, rgba(243, 156, 18, 0.05), transparent);
+}
 
-    .btn-warning {
-      background-color: var(--accent-color);
-      border: none;
-      font-weight: 600;
-      padding: 12px 30px;
-    }
 
-    /* Section Reveal Animation */
-    section {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s ease-out;
-    }
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+/* =========================
+   Profile Image
+========================= */
+.profile-img {
+  border: 4px solid var(--accent);
+  transition: transform var(--transition);
+}
+
+.profile-img:hover {
+  transform: scale(1.05) rotate(4deg);
+}
+
+
+/* =========================
+   Cards (Global)
+========================= */
+.card {
+  border: none;
+  border-radius: var(--radius);
+  background: rgba(var(--bs-body-bg-rgb), 1);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.skill-card:hover,
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================
+   Buttons
+========================= */
+.btn-warning {
+  background: var(--accent);
+  border: none;
+  font-weight: 600;
+  padding: 10px 26px;
+}
+/* =========================
+   Section Reveal Animation
+========================= */
+section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s ease;
+}
+
+section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+/* =========================
+   Project Slider
+========================= */
+.project-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Scroll Container */
+.project-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  cursor: grab;
+}
+
+/* Hide Scrollbar */
+.project-track::-webkit-scrollbar {
+  display: none;
+}
+
+.project-track:active {
+  cursor: grabbing;
+}
+
+.project-item {
+  width: 300px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+}
+
+
+/*Slider Buttons*/
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+
+  padding: 10px 14px;
+  cursor: pointer;
+
+  transition: all var(--transition);
+}
+
+.slider-btn:hover {
+  background: #000;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: 10px;
+}
+
+.next-btn {
+  right: 10px;
+}
+
+
+
+/* =========================
+   GLOBAL DARK MODE SYSTEM
+   ========================= */
+
+[data-bs-theme="dark"] {
+  --bs-body-bg: #121212;
+  --bs-body-color: #e5e5e5;
+}
+
+/* Body */
+[data-bs-theme="dark"] body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
+
+/* Navbar */
+[data-bs-theme="dark"] .navbar {
+  background-color: rgba(20, 20, 20, 0.8) !important;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Sections */
+[data-bs-theme="dark"] section {
+  background-color: transparent;
+}
+
+/* Cards (IMPORTANT) */
+[data-bs-theme="dark"] .card {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Fix bg-light / bg-body-tertiary */
+[data-bs-theme="dark"] .bg-light,
+[data-bs-theme="dark"] .bg-body-tertiary {
+  background-color: #1a1a1a !important;
+}
+
+/* Text muted fix */
+[data-bs-theme="dark"] .text-muted {
+  color: #b0b0b0 !important;
+}
+
+/* Buttons */
+[data-bs-theme="dark"] .btn-dark {
+  background-color: #fff;
+  color: #000;
+}
+
+[data-bs-theme="dark"] .btn-outline-dark {
+  color: #fff;
+  border-color: #fff;
+}
+
+[data-bs-theme="dark"] .btn-outline-dark:hover {
+  background-color: #fff;
+  color: #000;
+}
+
+/* Warning color fix (your yellow sections) */
+[data-bs-theme="dark"] .bg-warning {
+  background-color: #2b2b2b !important;
+  color: #f1f1f1 !important;
+}
+
+/* Footer */
+[data-bs-theme="dark"] footer {
+  background-color: #0d0d0d !important;
+}
+
+/* Inputs / Forms */
+[data-bs-theme="dark"] .form-control {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+[data-bs-theme="dark"] .form-control::placeholder {
+  color: #888;
+}
+
+/* Input group */
+[data-bs-theme="dark"] .input-group-text {
+  background-color: #1e1e1e;
+  color: #fff;
+  border: none;
+}
+
+/* Borders */
+[data-bs-theme="dark"] .border,
+[data-bs-theme="dark"] .border-top {
+  border-color: rgba(255,255,255,0.08) !important;
+}
+
+/* Project images */
+[data-bs-theme="dark"] .card img {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
