@@ -1,478 +1,133 @@
-<!DOCTYPE html>
-<html lang="en" data-bs-theme="light">
-
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Ravindra Singh | Frontend Developer</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem("theme");
+      document.documentElement.dataset.theme = savedTheme === "light" || savedTheme === "dark"
+        ? savedTheme
+        : (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    } catch {
+      document.documentElement.dataset.theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+  </script>
+  <meta name="description" content="Ravindra Singh is a frontend web developer building responsive, useful web experiences. Explore his journey, skills, work, and resume.">
   <meta property="og:image" content="https://ravindra-dot.github.io/profile/images/profile.webp">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <title>Ravindra Singh — Frontend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-
-  <nav class="navbar navbar-expand-lg sticky-top">
-    <div class="container">
-      <a class="navbar-brand fw-extrabold fs-3" href="index.html">RAVINDRA<span class="text-warning">.</span></a>
-      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
-        <span class="navbar-toggler-icon"></span>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Ravindra Singh, home">RAVINDRA<span>.</span></a>
+      <nav aria-label="Main navigation">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch theme" title="Switch theme">
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 14.2A8.7 8.7 0 0 1 9.8 3.5 8.8 8.8 0 1 0 20.5 14.2Z"/></svg>
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
       </button>
-
-      <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ms-auto align-items-center gap-3">
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-          <li class="nav-item">
-            <button class="btn btn-link text-body p-2" id="themeToggle" onclick="toggleTheme()">
-              <i class="bi bi-moon-stars-fill fs-5" id="themeIcon"></i>
-            </button>
-          </li>
-        </ul>
-      </div>
     </div>
-  </nav>
+  </header>
 
-  <section id="hero" class="d-flex align-items-center text-center py-5" style="min-height:90vh;">
-    <div class="container">
-      <div class="mb-4">
-        <img src="images/profile.webp" class="rounded-circle shadow profile-img" width="160" height="160"
-          alt="Ravindra Singh">
-      </div>
-      <h1 class="fw-bolder display-3">Hi, I'm <span class="text-warning">Ravindra Singh</span></h1>
-      <p class="text-muted">
-        Frontend Web Developer | Passionate about crafting responsive and user-friendly web experiences.
-      </p>
-      <div class="d-flex justify-content-center gap-2 mt-3 mb-4">
-        <span class="badge rounded-pill bg-body border border-body text-body px-3 py-2 fw-bold">HTML5</span>
-        <span class="badge rounded-pill bg-body border border-body text-body px-3 py-2 fw-bold">CSS3</span>
-        <span class="badge rounded-pill bg-body border border-body text-body px-3 py-2 fw-bold">JavaScript</span>
-        <span class="badge rounded-pill bg-body border border-body text-body px-3 py-2 fw-bold">Bootstrap</span>
-      </div>
-      </p>
-
-    </div>
-  </section>
-
-  <section id="about" class="py-5">
-    <div class="container text-center">
-      <h2 class="fw-bold mb-3">About Me</h2>
-      <p class="text-muted col-lg-9 mx-auto">
-        Computer Science graduate and Frontend Web Developer with 3 months of internship experience.
-        Skilled in building responsive, client-ready websites using HTML, CSS, JavaScript, and Bootstrap.
-        Comfortable working with Python, SQL, and basic data handling tools.
-      </p>
-    </div>
-  </section>
-
-  <section id="skills" class="py-5 bg-body-tertiary">
-    <div class="container">
-      <h2 class="fw-bold text-center mb-4">Technical Skills</h2>
-
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 p-3">
-            <h6 class="fw-bold">Web Technologies</h6>
-            <p class="mb-0">HTML5, CSS3, JavaScript (ES6), Bootstrap 5</p>
+  <main id="main">
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> RAVINDRA SINGH</p>
+          <h1 id="hero-title">Frontend web developer.</h1>
+          <p class="hero-intro">I build responsive websites and web tools using HTML, CSS, JavaScript, and Bootstrap. I'm a Computer Science graduate based in Mumbai, India.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#projects">View projects <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="doc/RavindraResume.pdf" target="_blank" rel="noopener">View resume <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-meta" aria-label="Profile highlights">
+            <div><strong>Frontend</strong><span>Web development</span></div>
+            <div><strong>CS graduate</strong><span>Technical foundation</span></div>
+            <div><strong>Mumbai</strong><span>India</span></div>
           </div>
         </div>
-
-        <div class="col-md-4">
-          <div class="card h-100 p-3">
-            <h6 class="fw-bold">Programming & Frameworks</h6>
-            <p class="mb-0">Python, Flask, NumPy, Pandas</p>
-          </div>
+        <div class="portrait-wrap">
+          <div class="portrait-frame"><img src="images/profile.webp" alt="Portrait of Ravindra Singh" width="430" height="520"></div>
+          <div class="portrait-label"><span class="label-star" aria-hidden="true">✳</span><span>Ravindra Singh<br><strong>Frontend developer</strong></span></div>
+          <span class="portrait-decoration" aria-hidden="true">RS<span> / 01</span></span>
         </div>
+      </div>
+      <div class="container scroll-cue"><span>MORE ABOUT ME</span><span aria-hidden="true">↓</span></div>
+    </section>
 
-        <div class="col-md-4">
-          <div class="card h-100 p-3">
-            <h6 class="fw-bold">Databases & Tools</h6>
-            <p class="mb-0">MySQL, MongoDB, Git, GitHub, Manual Testing</p>
+    <section id="about" class="section about-section" aria-labelledby="about-title">
+      <div class="container section-grid">
+        <div class="section-heading"><span class="section-number">01 / ABOUT</span><h2 id="about-title">About me</h2></div>
+        <div class="section-content">
+          <p class="lead">I focus on clear, responsive interfaces that work well across devices.</p>
+          <p>I studied Computer Science and have hands-on experience building websites. My main tools are HTML, CSS, JavaScript, and Bootstrap. I also work with Python and data tools.</p>
+          <div class="principles">
+            <div><span>01</span><strong>Clear structure</strong><p>Clear structure and readable content come first.</p></div>
+            <div><span>02</span><strong>Responsive layouts</strong><p>Layouts should work comfortably from phone to desktop.</p></div>
+            <div><span>03</span><strong>Practical learning</strong><p>Each project is a chance to sharpen both design and code.</p></div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-
-  <section class="py-5 bg-light bg-opacity-50">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">My Toolbox</h2>
-        <div class="bg-warning mx-auto" style="height: 4px; width: 50px; border-radius: 2px;"></div>
-      </div>
-      <div class="row g-4 justify-content-center">
-        <div class="col-6 col-md-3 col-lg-2">
-          <div class="card skill-card p-4 text-center shadow-sm">
-            <i class="bi bi-code-slash fs-1 text-warning mb-2"></i>
-            <h6 class="mb-0">JS (ES6)</h6>
-          </div>
-        </div>
-        <div class="col-6 col-md-3 col-lg-2">
-          <div class="card skill-card p-4 text-center shadow-sm">
-            <i class="bi bi-bootstrap-fill fs-1 text-primary mb-2"></i>
-            <h6 class="mb-0">Bootstrap</h6>
-          </div>
+    <section id="experience" class="section experience-section" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section-top"><div><span class="section-number">02 / EXPERIENCE</span><h2 id="experience-title">Experience</h2></div><p>My education, internship, and ongoing project work.</p></div>
+        <div class="timeline">
+          <article class="timeline-item"><span class="timeline-marker">01</span><div><span class="timeline-kicker">FOUNDATION</span><h3>Computer Science graduate</h3><p>Built a technical base in programming, data, and software concepts that supports my frontend work.</p></div></article>
+          <article class="timeline-item"><span class="timeline-marker">02</span><div><span class="timeline-kicker">PROFESSIONAL EXPERIENCE · MUMBAI, INDIA</span><h3>Web Developer Intern <span>@ R7 Soft Services</span></h3><p class="timeline-date">November 2025 – Present</p><p>Developing responsive static and multi-page websites and adapting interfaces to real client requirements.</p><ul><li>Built a multi-page site for a charitable trust using Bootstrap layout utilities.</li><li>Customized a car rental website template for a clean experience across devices.</li><li>Created a single-page landing site for an engineering solutions company.</li><li>Collaborated with the team on requirements and web performance.</li></ul></div></article>
+          <article class="timeline-item"><span class="timeline-marker">03</span><div><span class="timeline-kicker">CURRENT FOCUS</span><h3>Personal projects</h3><p>I build web tools and applications to practice frontend development and explore new techniques.</p></div></article>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="experience" class="py-5">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">Professional Experience</h2>
-        <div class="bg-warning mx-auto" style="height: 4px; width: 50px; border-radius: 2px;"></div>
-      </div>
-
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="card shadow-sm border-0 overflow-hidden">
-            <div class="row g-0">
-              <div class="col-md-4 bg-warning d-flex flex-column justify-content-center p-4 text-center">
-                <div class="mb-3">
-                  <i class="bi bi-building-check fs-1 text-white"></i>
-                </div>
-                <h4 class="fw-bold mb-0">R7 Soft Services</h4>
-                <p class="text-white-50 mb-0">Web Developer Intern</p>
-                <hr class="border-white opacity-25">
-                <span class="badge bg-dark rounded-pill py-2">November 2025-Present</span>
-                <p class="mt-2 mb-0 small text-dark fw-semibold"><i class="bi bi-geo-alt-fill"></i> Mumbai, India</p>
-              </div>
-
-              <div class="col-md-8 p-4 p-lg-5">
-                <div class="d-flex justify-content-between align-items-start mb-3">
-                  <h5 class="fw-bold text-warning">Key Contributions</h5>
-                </div>
-
-                <ul class="list-unstyled">
-                  <li class="mb-3 d-flex align-items-start">
-                    <i class="bi bi-check2-circle text-warning me-3 mt-1 fs-5"></i>
-                    <span>Developed <strong>responsive static and multi-page websites</strong> following modern UI
-                      practices.</span>
-                  </li>
-                  <li class="mb-3 d-flex align-items-start">
-                    <i class="bi bi-check2-circle text-warning me-3 mt-1 fs-5"></i>
-                    <span>Built a full multi-page site for <strong>Charitable Trust</strong> using Bootstrap layout
-                      utilities.</span>
-                  </li>
-                  <li class="mb-3 d-flex align-items-start">
-                    <i class="bi bi-check2-circle text-warning me-3 mt-1 fs-5"></i>
-                    <span>Customized Bootstrap templates for a <strong>Car Rental business</strong>, ensuring clean UI
-                      and cross-device compatibility.</span>
-                  </li>
-                  <li class="mb-3 d-flex align-items-start">
-                    <i class="bi bi-check2-circle text-warning me-3 mt-1 fs-5"></i>
-                    <span>Engineered a single-page landing site for an <strong>Engineering Solutions company</strong>
-                      (Cold-chain/Industrial).</span>
-                  </li>
-                  <li class="mb-0 d-flex align-items-start">
-                    <i class="bi bi-check2-circle text-warning me-3 mt-1 fs-5"></i>
-                    <span>Collaborated with teams to meet project requirements and optimized web performance.</span>
-                  </li>
-                </ul>
-
-                <div class="mt-4 pt-3 border-top">
-                  <p class="small fw-bold text-uppercase text-muted mb-2">Technologies Used:</p>
-                  <div class="d-flex flex-wrap gap-2">
-                    <span class="badge bg-body border border-body text-body px-3 py-2">HTML5</span>
-                    <span class="badge bg-body border border-body text-body px-3 py-2">CSS3</span>
-                    <span class="badge bg-body border border-body text-body px-3 py-2">JavaScript (ES6)</span>
-                    <span class="badge bg-body border border-body text-body px-3 py-2">Bootstrap 5</span>
-                    <span class="badge bg-body border border-body text-body px-3 py-2">Responsive Design</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+    <section id="skills" class="section skills-section" aria-labelledby="skills-title">
+      <div class="container section-grid">
+        <div class="section-heading"><span class="section-number">03 / SKILLS</span><h2 id="skills-title">Technical skills</h2><p>Tools I use for frontend work, programming, and development.</p></div>
+        <div class="skill-list">
+          <div class="skill-row"><span class="skill-index">01</span><div><h3>Frontend development</h3><p>HTML5 · CSS3 · JavaScript (ES6) · Bootstrap 5 · Responsive design</p></div><span aria-hidden="true">↗</span></div>
+          <div class="skill-row"><span class="skill-index">02</span><div><h3>Programming & data</h3><p>Python · Flask · NumPy · Pandas</p></div><span aria-hidden="true">↗</span></div>
+          <div class="skill-row"><span class="skill-index">03</span><div><h3>Databases & workflow</h3><p>MySQL · MongoDB · Git · GitHub · Manual testing</p></div><span aria-hidden="true">↗</span></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-
-
-  <section id="projects" class="py-5">
-    <div class="container">
-      <h2 class="text-center fw-bold mb-5">Projects</h2>
-      <div class="row g-4">
-        <div class="col-md-6">
-          <a href="https://github.com/ravindra-dot/code-editor.git" target="_blank"
-            style="text-decoration: none; color: inherit;">
-            <div class="card project-card shadow-sm h-100 overflow-hidden">
-              <div class="bg-warning p-5 text-center">
-                <i class="bi bi-laptop fs-1 text-white"></i>
-              </div>
-              <div class="card-body p-4">
-                <h5 class="fw-bold">Online Code Editor</h5>
-                <p class="text-muted small">Built with Python and Flask for real-time code rendering.</p>
-                <div class="mt-3">
-                  <span class="badge bg-body border border-body text-body me-1">Python</span>
-                  <span class="badge bg-body border border-body text-body">MongoDB</span>
-                </div>
-              </div>
-            </div>
-          </a>
+    <section id="projects" class="section projects-section" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-top"><div><span class="section-number">04 / PROJECTS</span><h2 id="projects-title">Projects</h2></div><p>Selected web applications and tools. Live sites and source code are linked below.</p></div>
+        <div class="project-grid">
+          <article class="project-card"><div class="project-visual visual-code"><span aria-hidden="true">&lt;/&gt;</span></div><div class="project-body"><span class="project-type">WEB APPLICATION</span><h3>Online Code Editor</h3><p>A Python and Flask project for writing code and rendering results in real time.</p><div class="tags"><span>Python</span><span>Flask</span><span>MongoDB</span></div><a href="https://github.com/ravindra-dot/code-editor.git" target="_blank" rel="noopener" class="project-link">View source <span aria-hidden="true">↗</span></a></div></article>
+          <article class="project-card"><div class="project-visual visual-agro"><span aria-hidden="true">✳</span></div><div class="project-body"><span class="project-type">MACHINE LEARNING</span><h3>Crop Recommendation System</h3><p>Recommends crops using soil nutrients and environmental factors.</p><div class="tags"><span>Python</span><span>MySQL</span><span>Machine learning</span></div><a href="https://github.com/ravindra-dot/AgroGuide.git" target="_blank" rel="noopener" class="project-link">View source <span aria-hidden="true">↗</span></a></div></article>
+          <article class="project-card"><div class="project-visual image-visual"><img src="images/textforge.png" alt="Text Forge interface preview" loading="lazy"></div><div class="project-body"><span class="project-type">WEB TOOL</span><h3>Text Forge</h3><p>A text generator for creating dummy content with custom controls.</p><div class="project-actions"><a href="https://ravindra-dot.github.io/Text-Forge/" target="_blank" rel="noopener">Live site ↗</a><a href="https://github.com/ravindra-dot/Text-Forge" target="_blank" rel="noopener">GitHub ↗</a></div></div></article>
+          <article class="project-card"><div class="project-visual image-visual"><img src="images/Notepad.png" alt="Notepad interface preview" loading="lazy"></div><div class="project-body"><span class="project-type">PRODUCTIVITY</span><h3>Notepad</h3><p>A simple online space to write, edit, and save notes without signing up.</p><div class="project-actions"><a href="https://ravindra-dot.github.io/notepad/" target="_blank" rel="noopener">Live site ↗</a><a href="https://github.com/ravindra-dot/notepad" target="_blank" rel="noopener">GitHub ↗</a></div></div></article>
+          <article class="project-card"><div class="project-visual image-visual"><img src="images/MovieHub.png" alt="Movie Hub interface preview" loading="lazy"></div><div class="project-body"><span class="project-type">DISCOVERY</span><h3>Movie Hub</h3><p>A movie database application for browsing and searching films.</p><div class="project-actions"><a href="https://ravindra-dot.github.io/movie-hub/" target="_blank" rel="noopener">Live site ↗</a><a href="https://github.com/ravindra-dot/movie-hub" target="_blank" rel="noopener">GitHub ↗</a></div></div></article>
+          <article class="project-card"><div class="project-visual image-visual"><img src="images/ToDo.png" alt="To-Do List interface preview" loading="lazy"></div><div class="project-body"><span class="project-type">PRODUCTIVITY</span><h3>To-Do List</h3><p>A straightforward task list for keeping daily work organized.</p><div class="project-actions"><a href="#" aria-label="To-Do List live link, coming soon">Live ↗</a><a href="#" aria-label="To-Do List GitHub link, coming soon">GitHub ↗</a></div></div></article>
         </div>
-
-        <div class="col-md-6">
-          <a href="https://github.com/ravindra-dot/AgroGuide.git" target="_blank"
-            style="text-decoration: none; color: inherit;">
-            <div class="card project-card shadow-sm h-100 overflow-hidden">
-              <div class="bg-warning p-5 text-center">
-                <i class="bi bi-laptop fs-1 text-white"></i>
-              </div>
-              <div class="card-body p-4">
-                <h5 class="fw-bold">Crop Recommendation System</h5>
-                <p class="text-muted small">Machine learning system to recommend crops based on soil nutrients and
-                  environmental factors.</p>
-                <div class="mt-3">
-                  <span class="badge bg-body border border-body text-body me-1">Python</span>
-                  <span class="badge bg-body border border-body text-body">MySql</span>
-                  <span class="badge bg-body border border-body text-body">Machine Learning</span>
-                </div>
-              </div>
-            </div>
-          </a>
-        </div>
+        <div class="github-strip"><div><span class="section-number">MORE WORK</span><h3>More projects on GitHub</h3><p>Browse my repositories and ongoing work.</p></div><a class="button button-outline" href="https://github.com/ravindra-dot" target="_blank" rel="noopener">Visit my GitHub <span aria-hidden="true">↗</span></a></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- project slider -->
-  <section>
-    <div class="project-slider overflow-hidden position-relative">
-      <div class="d-flex project-track">
+    <section id="future-projects" class="section future-section" aria-labelledby="future-title">
+      <div class="container future-grid"><div><span class="section-number">05 / FUTURE PROJECTS</span><h2 id="future-title">Future projects</h2><p>This section is reserved for projects I add later.</p></div><div class="future-slot"><span class="future-plus" aria-hidden="true">+</span><span>FUTURE PROJECT</span><p>New project details will go here.</p></div></div>
+    </section>
 
-        <!-- Project 1 -->
-        <div class="project-item mx-3">
-          <div class="card project-card shadow-sm h-100">
-            <img src="images/textforge.png" class="card-img-top" alt="Text Forge">
-            <div class="card-body d-flex flex-column">
-              <h5 class="fw-bold">Text Forge</h5>
-              <p class="text-muted small">
-                A text generator tool for creating dummy content with custom controls.
-              </p>
+    <section id="resume" class="section resume-section" aria-labelledby="resume-title"><div class="container resume-grid"><div><span class="section-number">06 / RESUME</span><h2 id="resume-title">Resume</h2><p>Download or view my resume for more information about my background and experience.</p></div><div class="resume-actions"><a class="button button-primary" href="doc/RavindraResume.pdf" download>Download CV <span aria-hidden="true">↓</span></a><a class="text-link" href="doc/RavindraResume.pdf" target="_blank" rel="noopener">Preview online <span aria-hidden="true">↗</span></a></div></div></section>
 
-              <div class="d-flex gap-5 mt-auto justify-content-center">
-                <a href="https://ravindra-dot.github.io/Text-Forge/" class="btn btn-sm btn-dark">Live</a>
-                <a href="https://github.com/ravindra-dot/Text-Forge" class="btn btn-sm btn-outline-dark">GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- Project 2  -->
-        <div class="project-item mx-3">
-          <div class="card project-card shadow-sm h-100">
-            <img src="images/Notepad.png" class="card-img-top" alt="Notepad">
-            <div class="card-body d-flex flex-column">
-              <h5 class="fw-bold">Notepad</h5>
-              <p class="text-muted small">
-                A clean and simple online notepad to quickly write, edit, and save your notes anytime.
-                No sign-up required — just open, type, and keep your thoughts organized instantly.
-
-              </p>
-
-              <div class="d-flex gap-5 mt-auto justify-content-center">
-                <a href="https://ravindra-dot.github.io/notepad/" class="btn btn-sm btn-dark">Live</a>
-                <a href="https://github.com/ravindra-dot/notepad" class="btn btn-sm btn-outline-dark">GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- project 3 -->
-        <div class="project-item mx-3">
-          <div class="card project-card shadow-sm h-100">
-            <img src="images/MovieHub.png" class="card-img-top" alt="Movie Hub">
-            <div class="card-body d-flex flex-column">
-              <h5 class="fw-bold">Movie Hub</h5>
-              <p class="text-muted small">
-                A movie database application for browsing and searching films.
-              </p>
-
-              <div class="d-flex gap-5 mt-auto justify-content-center">
-                <a href="https://ravindra-dot.github.io/movie-hub/" class="btn btn-sm btn-dark">Live</a>
-                <a href="https://github.com/ravindra-dot/movie-hub" class="btn btn-sm btn-outline-dark">GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- project 4 -->
-        <div class="project-item mx-3">
-          <div class="card project-card shadow-sm h-100">
-            <img src="images/ToDo.png" class="card-img-top" alt="To-Do List">
-            <div class="card-body d-flex flex-column">
-              <h5 class="fw-bold">To-Do List</h5>
-              <p class="text-muted small">
-                A simple and efficient to-do list application for managing tasks.
-              </p>
-
-              <div class="d-flex gap-5 mt-auto justify-content-center">
-                <a href="#" class="btn btn-sm btn-dark">Live</a>
-                <a href="#" class="btn btn-sm btn-outline-dark">GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- project 5 -->
-        <!-- <div class="project-item mx-3">
-          <div class="card project-card shadow-sm h-100">
-            <img src="images/MovieHub.png" class="card-img-top" alt="Movie Hub">
-            <div class="card-body d-flex flex-column">
-              <h5 class="fw-bold">Movie Hub</h5>
-              <p class="text-muted small">
-                A movie database application for browsing and searching films.
-              </p>
-
-              <div class="d-flex gap-2 mt-auto">
-                <a href="#" class="btn btn-sm btn-dark">Live</a>
-                <a href="#" class="btn btn-sm btn-outline-dark">GitHub</a>
-              </div>
-            </div>
-          </div>
-        </div> -->
-
-
-      </div>
-    </div>
-  </section>
-
-  <section id="github" class="py-5 bg-body-tertiary">
-    <div class="container text-center">
-      <h2 class="fw-bold mb-3">More Projects on GitHub</h2>
-
-      <p class="text-muted mb-4 col-md-8 mx-auto">
-        I regularly build and experiment with new projects.
-        Explore my GitHub for source code, practice work, and ongoing improvements.
-      </p>
-
-      <a href="https://github.com/ravindra-dot" target="_blank" class="btn btn-dark btn-lg px-4">
-        <i class="bi bi-github me-2"></i>
-        Visit My GitHub
-      </a>
-    </div>
-  </section>
-
-  <section id="resume" class="py-5 bg-light bg-opacity-25">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-lg-10">
-          <div class="card border-0 shadow-lg overflow-hidden" style="border-radius: 20px;">
-            <div class="row g-0">
-
-              <div
-                class="col-md-5 bg-dark d-flex flex-column justify-content-center align-items-center p-5 text-center text-white">
-                <div class="mb-4">
-                  <i class="bi bi-file-earmark-pdf-fill display-1 text-warning"></i>
-                </div>
-                <h3 class="fw-bold">Curriculum Vitae</h3>
-                <p class="text-secondary small">Updated: March 2026</p>
-              </div>
-
-              <div class="col-md-7 p-4 p-lg-5 d-flex flex-column justify-content-center">
-                <h2 class="fw-bold mb-3">Ready to work together?</h2>
-                <p class="text-muted mb-4">
-                  Download my full resume for a detailed look at my academic background,
-                  technical certifications, and project milestones.
-                </p>
-
-                <div class="d-flex flex-column flex-sm-row gap-3">
-                  <a href="doc/RavindraResume.pdf" download class="btn btn-warning btn-lg rounded-pill px-4 shadow-sm">
-                    <i class="bi bi-download me-2"></i>Download CV
-                  </a>
-
-                  <a href="doc/RavindraResume.pdf" target="_blank" class="btn btn-success btn-lg rounded-pill px-4">
-                    <i class="bi bi-eye me-2"></i>Preview Online
-                  </a>
-                </div>
-
-                <div class="mt-4 pt-3">
-                  <p class="small text-muted mb-0">
-                    <i class="bi bi-info-circle me-1"></i>
-                    Looking for a PDF version? Click download to save it.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="py-5 bg-body-tertiary">
-    <div class="container">
-      <div class="text-center mb-5">
-        <h2 class="fw-bold">Get In Touch</h2>
-        <div class="bg-warning mx-auto" style="height: 4px; width: 50px; border-radius: 2px;"></div>
-      </div>
-
-      <div class="row justify-content-center">
-        <div class="col-lg-8">
-          <div class="card border-0 shadow-sm p-4 p-md-5" style="border-radius: 20px;">
-            <form action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value="08d2eff9-d16f-49fb-82d4-4d8bfbf674de">
-
-              <div class="row g-3">
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold text-muted">Full Name</label>
-                  <div class="input-group">
-                    <span class="input-group-text bg-light border-0"><i class="bi bi-person"></i></span>
-                    <input type="text" name="name" class="form-control bg-light border-0" placeholder="YourName"
-                      required>
-                  </div>
-                </div>
-
-                <div class="col-md-6">
-                  <label class="form-label fw-semibold text-muted">Email Address</label>
-                  <div class="input-group">
-                    <span class="input-group-text bg-light border-0"><i class="bi bi-envelope"></i></span>
-                    <input type="email" name="email" class="form-control bg-light border-0"
-                      placeholder="name@example.com" required>
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <label class="form-label fw-semibold text-muted">Message</label>
-                  <textarea name="message" class="form-control bg-light border-0" rows="5"
-                    placeholder="Tell me about your project..." required></textarea>
-                </div>
-
-                <div class="col-12 text-center mt-4">
-                  <button type="submit" class="btn btn-warning btn-lg px-5 rounded-pill shadow-sm fw-bold">
-                    Send Message <i class="bi bi-send-fill ms-2"></i>
-                  </button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer id="contact" class="py-5 bg-dark text-white text-center">
-    <div class="container">
-      <h2 class="fw-bold mb-4">Let's Connect</h2>
-      <div class="d-flex justify-content-center gap-4 mb-4">
-        <a href="https://www.linkedin.com/in/ravindra-singh-5802822b5/" class="text-white fs-2"><i
-            class="bi bi-linkedin"></i></a>
-        <a href="https://github.com/ravindra-dot" class="text-white fs-2"><i class="bi bi-github"></i></a>
-        <a href="mailto:bannaravindra26@gmail.com" class="text-white fs-2"><i class="bi bi-envelope-at"></i></a>
-      </div>
-      <p class="text-secondary">© 2026 Ravindra Singh</p>
-    </div>
-  </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
-
+    <section id="contact" class="section contact-section" aria-labelledby="contact-title"><div class="container contact-grid"><div><span class="section-number">07 / CONTACT</span><h2 id="contact-title">Contact me</h2><p>Have a role or project in mind? Send me a message.</p><div class="social-links"><a href="https://www.linkedin.com/in/ravindra-singh-5802822b5/" target="_blank" rel="noopener">LinkedIn ↗</a><a href="https://github.com/ravindra-dot" target="_blank" rel="noopener">GitHub ↗</a><a href="mailto:bannaravindra26@gmail.com">Email ↗</a></div></div><form class="contact-form" action="https://api.web3forms.com/submit" method="POST"><input type="hidden" name="access_key" value="08d2eff9-d16f-49fb-82d4-4d8bfbf674de"><label for="name">Your name</label><input id="name" type="text" name="name" placeholder="Your name" autocomplete="name" required><label for="email">Email address</label><input id="email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required><label for="message">Your message</label><textarea id="message" name="message" rows="5" placeholder="Tell me about your project..." required></textarea><button class="button button-primary" type="submit">Send message <span aria-hidden="true">↗</span></button></form></div></section>
+  </main>
+  <footer class="site-footer"><div class="container footer-inner"><a class="brand" href="index.html">RAVINDRA<span>.</span></a><p>© 2026 Ravindra Singh.</p><a href="#main">Back to top ↑</a></div></footer>
+  <script src="script.js" defer></script>
 </body>
-
 </html>
